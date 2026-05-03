@@ -1,0 +1,82 @@
+[
+  {
+    "timestamp": 1777805365.0071895,
+    "raw_log": "Sample ERROR log",
+    "ip": "192.168.1.100",
+    "logs": [
+      "INFO User login success ip=192.168.1.211",
+      "INFO File accessed ip=192.168.1.20",
+      "FAILED LOGIN user=admin ip=192.168.1.211",
+      "FAILED LOGIN user=root ip=192.168.1.211",
+      "FAILED LOGIN user=admin ip=192.168.1.211",
+      "FAILED LOGIN user=sawan ip=192.168.1.211",
+      "FAILED LOGIN user=sawan-warkar ip=192.168.1.211",
+      "CRITICAL Possible brute force attack ip=192.168.1.211",
+      "ERROR Unauthorized access attempt ip=192.168.1.50"
+    ],
+    "analysis": {
+      "threat_level": "Low",
+      "attack_type": "Test",
+      "summary": "Manual trigger",
+      "recommended_action": "None"
+    }
+  },
+  {
+    "timestamp": 1777804656.1308525,
+    "raw_log": "",
+    "ip": "192.168.1.45",
+    "logs": [
+      "WARNING Possible SQL Injection attempt ip=192.168.1.45 payload=' OR 1=1 --",
+      "WARNING SQL Injection attempt ip=192.168.1.45 payload=admin'--"
+    ],
+    "analysis": "As a SOC analyst, I've analyzed the incident and here's my report in strict JSON format:\n\n```\n{\n  \"threat_level\": \"Medium\",\n  \"attack_type\": \"SQL Injection\",\n  \"summary\": \"A potential SQL injection attempt was detected from IP address 192.168.1.45. The attacker attempted to inject malicious SQL queries using the OR 1=1 and admin payload.\",\n  \"recommended_action\":\n    [\n      {\n        \"action\": \"Block the IP address 192.168.1.45\",\n        \"reason\": \"To prevent further unauthorized access\"\n      },\n      {\n        \"action\": \"Review database logs for suspicious activity\",\n        \"reason\": \"To identify potential vulnerabilities and take corrective action\"\n      }\n    ]\n}\n```\n\nNote: The threat level is classified as Medium because the attacker's payload suggests an attempt to inject malicious SQL queries, but it does not appear to be a highly sophisticated or targeted attack."
+  },
+  {
+    "timestamp": 1714756800.0,
+    "raw_log": "CRITICAL Unauthorized access attempt from user root at /admin",
+    "ip": "192.168.1.200",
+    "logs": [
+      "ERROR Failed login for user root ip=192.168.1.200",
+      "CRITICAL Unauthorized access attempt ip=192.168.1.200",
+      "INFO User session ended ip=192.168.1.200"
+    ],
+    "analysis": {
+      "threat_level": "High",
+      "attack_type": "Brute Force",
+      "summary": "Multiple failed login attempts from the same IP indicate a brute force attack.",
+      "recommended_action": "Block the IP and investigate failed login source."
+    }
+  },
+  {
+    "timestamp": 1714753200.0,
+    "raw_log": "WARNING SQL Injection payload detected in login request",
+    "ip": "192.168.1.45",
+    "logs": [
+      "WARNING Possible SQL Injection attempt ip=192.168.1.45 payload=' OR 1=1 --",
+      "ERROR Database query failed suspicious input ip=192.168.1.45",
+      "CRITICAL SQL Injection exploitation attempt ip=192.168.1.45"
+    ],
+    "analysis": {
+      "threat_level": "Critical",
+      "attack_type": "SQL Injection",
+      "summary": "A SQL injection exploit was detected against the login endpoint.",
+      "recommended_action": "Block the attacker, review web input sanitization, and patch immediately."
+    }
+  },
+  {
+    "timestamp": 1714749600.0,
+    "raw_log": "ERROR Suspicious file upload detected from user session",
+    "ip": "192.168.1.150",
+    "logs": [
+      "INFO File upload started ip=192.168.1.150",
+      "WARNING Suspicious payload detected during upload ip=192.168.1.150",
+      "ERROR File upload blocked ip=192.168.1.150"
+    ],
+    "analysis": {
+      "threat_level": "Medium",
+      "attack_type": "Malicious Upload",
+      "summary": "A suspicious file upload was blocked and should be investigated.",
+      "recommended_action": "Review upload filters and monitor the source IP."
+    }
+  }
+]
