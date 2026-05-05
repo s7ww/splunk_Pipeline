@@ -13,11 +13,11 @@ headers = {
 logs = [
 
     # SQL Injection attempts (same IP)
-    "WARNING Possible SQL Injection attempt ip=192.168.1.45 payload=' OR 1=1 --",
-    "ERROR Database query failed suspicious input ip=192.168.1.45",
-    "WARNING SQL Injection attempt ip=192.168.1.45 payload=admin'--",
-    "ERROR Login bypass attempt detected ip=192.168.1.45 payload=' OR 'a'='a",
-    "CRITICAL SQL Injection exploitation attempt ip=192.168.1.45 table=users",
+    "WARNING Possible SQL Injection attempt ip=192.168.66.99 payload=' OR 1=1 --",
+    "ERROR Database query failed suspicious input ip=192.168.66.99",
+    "WARNING SQL Injection attempt ip=192.168.66.99 payload=admin'--",
+    "ERROR Login bypass attempt detected ip=192.168.66.99 payload=' OR 'a'='a",
+    "CRITICAL SQL Injection exploitation attempt ip=192.168.66.99 table=users",
 
 ]
 

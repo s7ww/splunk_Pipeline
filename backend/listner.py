@@ -156,7 +156,11 @@ async def receive_alert(request: Request):
 # -------------------------
 @app.get("/alerts")
 async def get_alerts():
-    return {"alerts": alerts_store}
+    return {"alerts": load_alerts()}
+
+@app.get("/actions")
+async def get_actions():
+    return {"actions": {}}
 
 @app.post("/trigger-alert")
 async def trigger_alert():
