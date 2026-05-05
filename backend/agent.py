@@ -5,14 +5,10 @@ from langchain_core.tools import tool
 
 import re
 
-# -----------------------------
-# LLM
-# -----------------------------
+
 llm = OllamaLLM(model="llama3")
 
-# -----------------------------
-# TOOL: Extract IP intelligence (simple version)
-# -----------------------------
+
 @tool
 def enrich_ip(ip: str) -> str:
     """Basic IP enrichment tool"""
@@ -20,14 +16,9 @@ def enrich_ip(ip: str) -> str:
         return "Internal IP - likely inside network"
     return "External IP - possible threat source"
 
-# -----------------------------
-# OUTPUT PARSER
-# -----------------------------
+
 parser = JsonOutputParser()
 
-# -----------------------------
-# SYSTEM PROMPT
-# -----------------------------
 prompt = ChatPromptTemplate.from_messages([
     ("system", """
 You are an experienced SOC analyst working in a Security Operations Center.
@@ -77,9 +68,7 @@ Return STRICT JSON:
 """)
 ])
 
-# -----------------------------
-# MAIN ANALYZER
-# -----------------------------
+
 def analyze_event(logs):
     if not logs:
         return {"status": "no logs"}
